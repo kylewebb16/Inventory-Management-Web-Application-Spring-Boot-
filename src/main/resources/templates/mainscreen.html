@@ -14,13 +14,16 @@
     <title>Kyle's Workout Warehouse</title>
 </head>
 <body>
-    <div class="container-fluid p-0 text-center">
-        <img src="/img/gym-background.jpg" alt="Cool picture of a gym" class="img-fluid">
+<section class="position-relative">
+    <img src="/img/gym-background.jpg" alt="Cool picture of a gym" class="img-fluid">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50"></div>
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white px-3">
+        <h1 class="display-5 fw-bold">Kyle's Workout Warehouse</h1>
     </div>
-
-<div class="container text-center pb-1 pt-0">
-    <h1 class="text-primary pt-0">Kyle's Workout Warehouse</h1>
-    <a th:href="@{/about}" class="btn btn-primary">About</a>
+</section>
+<section>
+<div class="container text-center p-2">
+    <a th:href="@{/about}" class="btn btn-info">About</a>
     <hr>
     <h2>Gym Parts</h2>
     <form th:action="@{/mainscreen}">
@@ -91,5 +94,6 @@
         </tbody>
     </table>
 </div>
+</section>
 </body>
 </html>
