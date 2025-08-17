@@ -1,5 +1,6 @@
 package com.example.demo.bootstrap;
 
+import com.example.demo.domain.InhousePart;
 import com.example.demo.domain.OutsourcedPart;
 import com.example.demo.domain.Part;
 import com.example.demo.domain.Product;
@@ -10,6 +11,8 @@ import com.example.demo.service.OutsourcedPartService;
 import com.example.demo.service.OutsourcedPartServiceImpl;
 import com.example.demo.service.ProductService;
 import com.example.demo.service.ProductServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +29,7 @@ import java.util.Optional;
 @Component
 public class BootStrapData implements CommandLineRunner {
 
+    private static final Logger log = LoggerFactory.getLogger(BootStrapData.class);
     private final PartRepository partRepository;
     private final ProductRepository productRepository;
 
@@ -39,44 +43,17 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        // Check if database is already populated
         if (productRepository.count() > 0 || partRepository.count() > 0) {
-            System.err.println("Database already contains data, bypassing bootstrapdata");
+            // Do not populate default data if so, log to server
+            log.info("Database already contains data, bypassing default data initialization");
             return;
         }
 
-
-
-        OutsourcedPart barbellClamp= new OutsourcedPart();
-        barbellClamp.setCompanyName("Rogue Fitness");
-        barbellClamp.setName("Barbell Clamp");
-        barbellClamp.setInv(5);
-        barbellClamp.setPrice(20.0);
-        barbellClamp.setId(100L);
-        outsourcedPartRepository.save(barbellClamp);
-        OutsourcedPart thePart=null;
-        List<OutsourcedPart> outsourcedParts=(List<OutsourcedPart>) outsourcedPartRepository.findAll();
-        for(OutsourcedPart part:outsourcedParts){
-            if(part.getName().equals("out test"))thePart=part;
-        }
-
-        System.out.println(thePart.getCompanyName());
-
-        for(OutsourcedPart part:outsourcedParts){
-            System.out.println(part.getName()+" "+part.getCompanyName());
-        }
-
-
-        Product squatRack= new Product("Power Squat Rack",799.99,30);
-        Product benchPress= new Product("Flat Bench Press Station",549.99,30);
-        Product deadLiftPlatform= new Product("Deadlift Platform",999.99,20);
-        Product dumbbellSet= new Product("Adjustable Dumbbell Set",750.0,25);
-        Product multiStationTower= new Product("Multi-Station Tower",1499.99,20);
-        productRepository.save(squatRack);
-        productRepository.save(benchPress);
-        productRepository.save(deadLiftPlatform);
-        productRepository.save(dumbbellSet);
-        productRepository.save(multiStationTower);
-
+        // Populate five parts and products
+        initializeDefaultParts();
+        initializeDefaultProducts();
+        log.info("Database empty, initialized default parts and products");
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Products"+productRepository.count());
@@ -84,5 +61,50 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println("Number of Parts"+partRepository.count());
         System.out.println(partRepository.findAll());
 
+    }
+
+    private void initializeDefaultProducts() {
+        productRepository.save(new Product("Power Squat Rack",799.99,30));
+        productRepository.save(new Product("Flat Bench Press Station",549.99,30));
+        productRepository.save(new Product("Deadlift Platform",999.99,20));
+        productRepository.save(new Product("Adjustable Dumbbell Set",750.0,25));
+        productRepository.save(new Product("Multi-Station Tower",1499.99,20));
+    }
+
+    private void initializeDefaultParts() {
+        OutsourcedPart barbellClamp= new OutsourcedPart();
+        barbellClamp.setCompanyName("Rogue Fitness");
+        barbellClamp.setName("Barbell Clamp");
+        barbellClamp.setInv(5);
+        barbellClamp.setPrice(20.0);
+        outsourcedPartRepository.save(barbellClamp);
+
+        InhousePart fiveLbPlate = new InhousePart();
+        fiveLbPlate.setName("5 lb Steel Plate");
+        fiveLbPlate.setInv(100);
+        fiveLbPlate.setPrice(14.99);
+        fiveLbPlate.setPartId(1);
+        partRepository.save(fiveLbPlate);
+
+        InhousePart tenLbPlate = new InhousePart();
+        tenLbPlate.setName("10 lb Steel Plate");
+        tenLbPlate.setInv(50);
+        tenLbPlate.setPrice(29.99);
+        tenLbPlate.setPartId(2);
+        partRepository.save(tenLbPlate);
+
+        InhousePart fourtyFiveLbPlate = new InhousePart();
+        fourtyFiveLbPlate.setName("45 lb Steel Plate");
+        fourtyFiveLbPlate.setInv(50);
+        fourtyFiveLbPlate.setPrice(89.99);
+        fourtyFiveLbPlate.setPartId(3);
+        partRepository.save(fourtyFiveLbPlate);
+
+        InhousePart rackUprights = new InhousePart();
+        rackUprights.setName("Rack Uprights (Individual Posts)");
+        rackUprights.setInv(200);
+        rackUprights.setPrice(199.99);
+        rackUprights.setPartId(4);
+        partRepository.save(rackUprights);
     }
 }
