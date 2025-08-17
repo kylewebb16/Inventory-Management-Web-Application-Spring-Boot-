@@ -48,7 +48,7 @@
         <tbody>
         <tr th:each="tempPart : ${parts}">
             <td th:text="${tempPart.name}">1</td>
-            <td th:text="${tempPart.price}">1</td>
+            <td th:text="'$' + ${tempPart.price}">1</td>
             <td th:text="${tempPart.inv}">1</td>
             <td><a th:href="@{/showPartFormForUpdate(partID=${tempPart.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
                 <a th:href="@{/deletepart(partID=${tempPart.id})}" class="btn btn-primary btn-sm mb-3"
@@ -84,7 +84,7 @@
         <tbody>
         <tr th:each="tempProduct : ${products}">
             <td th:text="${tempProduct.name}">1</td>
-            <td th:text="${tempProduct.price}">1</td>
+            <td th:text="'$' + ${tempProduct.price}">1</td>
             <td th:text="${tempProduct.inv}">1</td>
             <td><a th:href="@{/showProductFormForUpdate(productID=${tempProduct.id})}" class="btn btn-primary btn-sm mb-3">Update</a>
                 <a th:href="@{/deleteproduct(productID=${tempProduct.id})}" class="btn btn-primary btn-sm mb-3"
