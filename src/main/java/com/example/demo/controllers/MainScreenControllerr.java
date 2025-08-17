@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -56,5 +58,15 @@ public class MainScreenControllerr {
     @GetMapping("/about")
     public String about(){
         return "about";
+    }
+    @GetMapping("/buyProduct")
+    public String buyProduct(@ModelAttribute("productID") int id, Model theModel) {
+        Product theProduct = productService.findById(id);
+        if (theProduct.getInv() > 0) {
+            theProduct.setInv(theProduct.getInv() - 1);
+            productService.save(theProduct);
+            return "confirmationbuyproduct";
+        }
+        return "outofstockerror";
     }
 }
