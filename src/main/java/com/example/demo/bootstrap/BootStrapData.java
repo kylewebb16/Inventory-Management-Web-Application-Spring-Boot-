@@ -77,6 +77,8 @@ public class BootStrapData implements CommandLineRunner {
         barbellClamp.setName("Barbell Clamp");
         barbellClamp.setInv(5);
         barbellClamp.setPrice(20.0);
+        barbellClamp.setMinInventoryValue(5);
+        barbellClamp.setMaxInventoryValue(300);
         outsourcedPartRepository.save(barbellClamp);
 
         InhousePart fiveLbPlate = new InhousePart();
@@ -84,6 +86,8 @@ public class BootStrapData implements CommandLineRunner {
         fiveLbPlate.setInv(100);
         fiveLbPlate.setPrice(14.99);
         fiveLbPlate.setPartId(1);
+        fiveLbPlate.setMinInventoryValue(25);
+        fiveLbPlate.setMaxInventoryValue(300);
         partRepository.save(fiveLbPlate);
 
         InhousePart tenLbPlate = new InhousePart();
@@ -91,20 +95,26 @@ public class BootStrapData implements CommandLineRunner {
         tenLbPlate.setInv(50);
         tenLbPlate.setPrice(29.99);
         tenLbPlate.setPartId(2);
+        tenLbPlate.setMinInventoryValue(25);
+        tenLbPlate.setMaxInventoryValue(200);
         partRepository.save(tenLbPlate);
 
-        InhousePart fourtyFiveLbPlate = new InhousePart();
-        fourtyFiveLbPlate.setName("45 lb Steel Plate");
-        fourtyFiveLbPlate.setInv(50);
-        fourtyFiveLbPlate.setPrice(89.99);
-        fourtyFiveLbPlate.setPartId(3);
-        partRepository.save(fourtyFiveLbPlate);
+        InhousePart fortyFiveLbPlate = new InhousePart();
+        fortyFiveLbPlate.setName("45 lb Steel Plate");
+        fortyFiveLbPlate.setInv(50);
+        fortyFiveLbPlate.setPrice(89.99);
+        fortyFiveLbPlate.setPartId(3);
+        fortyFiveLbPlate.setMinInventoryValue(20);
+        fortyFiveLbPlate.setMaxInventoryValue(200);
+        partRepository.save(fortyFiveLbPlate);
 
         InhousePart rackUprights = new InhousePart();
         rackUprights.setName("Rack Uprights (Individual Posts)");
         rackUprights.setInv(200);
         rackUprights.setPrice(199.99);
         rackUprights.setPartId(4);
+        rackUprights.setMinInventoryValue(50);
+        rackUprights.setMaxInventoryValue(500);
         partRepository.save(rackUprights);
     }
 }
