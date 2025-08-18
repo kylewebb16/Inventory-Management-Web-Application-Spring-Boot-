@@ -59,14 +59,4 @@ public class MainScreenControllerr {
     public String about(){
         return "about";
     }
-    @GetMapping("/buyProduct")
-    public String buyProduct(@ModelAttribute("productID") int id, Model theModel) {
-        Product theProduct = productService.findById(id);
-        if (theProduct.getInv() > 0) {
-            theProduct.setInv(theProduct.getInv() - 1);
-            productService.save(theProduct);
-            return "confirmationbuyproduct";
-        }
-        return "outofstockerror";
-    }
 }

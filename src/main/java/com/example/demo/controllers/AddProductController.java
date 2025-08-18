@@ -173,4 +173,17 @@ public class AddProductController {
         theModel.addAttribute("availparts",availParts);
         return "productForm";
     }
+
+    @GetMapping("/buyProduct")
+    public String buyProduct(@ModelAttribute("productID") int id, Model theModel) {
+        ProductService productService = context.getBean(ProductServiceImpl.class);
+        Product theProduct = productService.findById(id);
+        int currentInventory = theProduct.getInv();
+        if (currentInventory > 0) {
+            theProduct.setInv(currentInventory - 1);
+            productService.save(theProduct);
+            return "confirmationbuyproduct";
+        }
+        return "outofstockerror";
+    }
 }
