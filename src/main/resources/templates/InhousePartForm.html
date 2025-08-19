@@ -37,6 +37,12 @@
     <label for="partMaxVal" class="form-label">Maximum inventory amount</label>
     <p><input id="partMaxVal" type="text" th:field="*{maxInventoryValue}" placeholder="Maximum Inventory Value" class="form-control mb-4 col-4"/></p>
 
+    <div class="text-danger" th:if="${#fields.hasAnyErrors()}">
+        <ul>
+            <li th:each="err: ${#fields.allErrors()}" th:text="${err}"></li>
+        </ul>
+    </div>
+
 <p><input type="submit" value="Submit" /></p>
 </form>
 <p><errors path="price" cssClass=""error/><p>
