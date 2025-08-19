@@ -17,15 +17,25 @@
 <!-- Add hidden form field to handle update -->
     <p><input type="hidden" th:field="*{id}"/></p>
 
-<p><input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
+<label for="partName" class="form-label">Part name</label>
+<p><input id="partName" type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
 
-<p><input type="text" path="price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
+<label for="partPrice" class="form-label">Price</label>
+<p><input id="partPrice" type="text" path="price" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
 <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</p>
 
-<p><input type="text" path="inv" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
+<label for="partInvetory" class="form-label">Amount in inventory</label>
+<p><input id="partInvetory" type="text" path="inv" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
     <p th:if="${#fields.hasErrors('inv')}" th:errors="*{inv}">Inventory Error</p>
 
-    <p><input type="text" th:field="*{partId}" placeholder="Part ID" class="form-control mb-4 col-4"/></p>
+    <label for="partId" class="form-label">Part ID</label>
+    <p><input id="partId" type="text" th:field="*{partId}" placeholder="Part ID" class="form-control mb-4 col-4"/></p>
+
+    <label for="partMinVal" class="form-label">Minimum inventory amount</label>
+    <p><input id="partMinVal" type="text" th:field="*{minInventoryValue}" placeholder="Minimum Inventory Value" class="form-control mb-4 col-4"/></p>
+
+    <label for="partMaxVal" class="form-label">Maximum inventory amount</label>
+    <p><input id="partMaxVal" type="text" th:field="*{maxInventoryValue}" placeholder="Maximum Inventory Value" class="form-control mb-4 col-4"/></p>
 
 <p><input type="submit" value="Submit" /></p>
 </form>
