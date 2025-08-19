@@ -91,7 +91,7 @@ public class BootStrapData implements CommandLineRunner {
         partRepository.save(fiveLbPlate);
 
         InhousePart tenLbPlate = new InhousePart();
-        tenLbPlate.setName("10 lb Steel Plate");
+        tenLbPlate.setName("10 lb Bumper Plate");
         tenLbPlate.setInv(50);
         tenLbPlate.setPrice(29.99);
         tenLbPlate.setPartId(2);
@@ -100,7 +100,7 @@ public class BootStrapData implements CommandLineRunner {
         partRepository.save(tenLbPlate);
 
         InhousePart fortyFiveLbPlate = new InhousePart();
-        fortyFiveLbPlate.setName("45 lb Steel Plate");
+        fortyFiveLbPlate.setName("45 lb Bumper Plate");
         fortyFiveLbPlate.setInv(50);
         fortyFiveLbPlate.setPrice(89.99);
         fortyFiveLbPlate.setPartId(3);
