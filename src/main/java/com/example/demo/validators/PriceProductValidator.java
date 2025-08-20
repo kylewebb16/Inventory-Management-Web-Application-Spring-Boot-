@@ -42,6 +42,7 @@ public class PriceProductValidator implements ConstraintValidator<ValidProductPr
             if (product.getPrice() >= sumPartsPrice) {
                 return true;
             } else {
+                constraintValidatorContext.buildConstraintViolationWithTemplate("Price of parts is greater than whole.").addConstraintViolation();
                 return false;
             }
         }

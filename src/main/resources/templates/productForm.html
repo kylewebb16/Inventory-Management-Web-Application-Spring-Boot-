@@ -39,7 +39,9 @@
     <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Inventory</th>
+        <th>Current <br> Inventory</th>
+        <th>Minimum <br> in Stock</th>
+        <th>Maximum <br> in Stock</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -48,6 +50,8 @@
         <td th:text="${tempPart.name}">1</td>
         <td th:text="${tempPart.price}">1</td>
         <td th:text="${tempPart.inv}">1</td>
+        <td th:text="${tempPart.minInventoryValue}">1</td>
+        <td th:text="${tempPart.maxInventoryValue}">1</td>
         <td><a th:href="@{/associatepart(partID=${tempPart.id})}" class="btn btn-primary btn-sm mb-3">Add</a>
         </td>
     </tr>
@@ -59,7 +63,9 @@
         <tr>
             <th>Name</th>
             <th>Price</th>
-            <th>Inventory</th>
+            <th>Current <br> Inventory</th>
+            <th>Minimum <br> in Stock</th>
+            <th>Maximum <br> in Stock</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -68,6 +74,8 @@
             <td th:text="${tempPart.name}">1</td>
             <td th:text="${tempPart.price}">1</td>
             <td th:text="${tempPart.inv}">1</td>
+            <td th:text="${tempPart.minInventoryValue}">1</td>
+            <td th:text="${tempPart.maxInventoryValue}">1</td>
             <td><a th:href="@{/removepart(partID=${tempPart.id})}"  class="btn btn-primary btn-sm mb-3">Remove</a>
             </td>
         </tr>
