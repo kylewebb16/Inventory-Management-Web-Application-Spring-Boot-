@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Project: demoDarbyFrameworks2-master
@@ -155,5 +156,44 @@ class PartTest {
         partIn.setId(1l);
         partOut.setId(1l);
         assertEquals(partIn.hashCode(),partOut.hashCode());
+    }
+
+    @Test
+    void getMinimumInventory() {
+        int minInv = 5;
+        partIn.setMinInventoryValue(minInv);
+        assertEquals(minInv, partIn.getMinInventoryValue());
+
+        partOut.setMinInventoryValue(minInv);
+        assertEquals(minInv, partOut.getMinInventoryValue());
+    }
+
+    @Test
+    void setMinimumInventory() {
+        int minInv = 6;
+        partIn.setInv(minInv);
+        assertEquals(partIn.getMinInventoryValue(), minInv);
+
+        partOut.setInv(minInv);
+        assertEquals(partOut.getMinInventoryValue(), minInv);
+    }
+
+    @Test
+    void getMaximumInventory() {
+        int maxInv = 5;
+        partIn.setMaxInventoryValue(maxInv);
+        assertEquals(maxInv, partIn.getMaxInventoryValue());
+
+        partOut.setMinInventoryValue(maxInv);
+        assertEquals(maxInv, partOut.getMaxInventoryValue());
+    }
+    @Test
+    void setMaximumInventory() {
+        int maxInv = 6;
+        partIn.setInv(maxInv);
+        assertEquals(partIn.getMaxInventoryValue(), maxInv);
+
+        partOut.setInv(maxInv);
+        assertEquals(partOut.getMaxInventoryValue(), maxInv);
     }
 }
