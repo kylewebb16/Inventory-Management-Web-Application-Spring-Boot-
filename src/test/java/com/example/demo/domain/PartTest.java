@@ -170,30 +170,30 @@ class PartTest {
 
     @Test
     void setMinimumInventory() {
-        int minInv = 6;
-        partIn.setInv(minInv);
+        int minInv = 5;
+        partIn.setMinInventoryValue(minInv);
         assertEquals(partIn.getMinInventoryValue(), minInv);
 
-        partOut.setInv(minInv);
+        partOut.setMinInventoryValue(minInv);
         assertEquals(partOut.getMinInventoryValue(), minInv);
     }
 
     @Test
     void getMaximumInventory() {
-        int maxInv = 5;
+        int maxInv = 10;
         partIn.setMaxInventoryValue(maxInv);
         assertEquals(maxInv, partIn.getMaxInventoryValue());
 
-        partOut.setMinInventoryValue(maxInv);
+        partOut.setMaxInventoryValue(maxInv);
         assertEquals(maxInv, partOut.getMaxInventoryValue());
     }
     @Test
     void setMaximumInventory() {
-        int maxInv = 6;
-        partIn.setInv(maxInv);
+        int maxInv = 10;
+        partIn.setMaxInventoryValue(maxInv);
         assertEquals(partIn.getMaxInventoryValue(), maxInv);
 
-        partOut.setInv(maxInv);
+        partOut.setMaxInventoryValue(maxInv);
         assertEquals(partOut.getMaxInventoryValue(), maxInv);
     }
 }
