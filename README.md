@@ -1,51 +1,54 @@
 # Inventory Management Web Application
 
-Project type: Spring Boot web application  
-Purpose: Portfolio / technical interview demonstration of a customized inventory system for a retail customer (\`Kyle's Workout Warehouse\`).
+Project: Web-Based Spring Inventory Application  
+Scenario: Kyle's Workout Warehouse — a gym equipment distributor.
 
 ## Summary
-A small, production-like Spring Boot application that models Products composed of Parts with server-side HTML views (Thymeleaf). Core capabilities include inventory tracking with min/max constraints, a purchase flow that decrements product inventory, sample data seeding, server-side validation, and unit tests. The codebase demonstrates full-stack feature implementation using Spring MVC, services, repositories, and validators.
+A Spring Boot web application that models Products composed of Parts with a server-rendered Thymeleaf UI. The system enforces inventory rules (min/max), supports a purchase flow that decrements inventory, seeds safe sample data, and includes unit tests for core business rules.
 
 ## Impact & functionality
-- Provides a clear, user-facing inventory management UI for product and part lifecycle (create, update, delete, purchase).
-- Enforces business rules: inventory must remain within configured minimum/maximum bounds; products cannot be modified in ways that break part constraints.
-- Safe sample-data seeding: inserts a representative inventory only when the data store is empty to avoid overwriting user data.
-- Readable feedback: purchase success/failure and validation errors are surfaced in the UI to improve user trust and reduce errors.
-- Testable design: services and domain objects are structured to allow unit testing of critical business rules.
+- Clear inventory management UI for creating, updating, deleting, and purchasing items.
+- Business-rule enforcement: part inventory must remain within configured min/max bounds.
+- Atomic purchase behavior: "Buy Now" verifies availability and updates inventory with user feedback on success or failure.
+- Safe sample-data seeding: representative inventory is added only when the datastore is empty.
+- Testable design: domain logic and services are structured for unit testing of critical behaviors.
 
 ## Technical overview
-- Presentation: Thymeleaf templates render server-side HTML and display validation messages.
-- Controllers: handle HTTP requests, coordinate services, and return views.
-- Services: encapsulate business logic and coordinate repositories.
-- Repositories: Spring Data interfaces for persistence.
-- Validation: custom validators enforce domain constraints before persistence.
-- Persistence: file- or embedded-based persistence configured in \`src/main/resources/application.properties\`.
+- Framework: Spring Boot (Java, Maven)
+- Presentation: Thymeleaf server-side templates
+- Persistence: Spring Data repositories (embedded or file-backed via `src/main/resources/application.properties`)
+- Validation: Custom validators and server-side checks in services/controllers
+- Tests: JUnit-based unit tests located under `src/test/java`
 
 ## How to run (Windows)
-Prerequisites: JDK 17+, Maven, IntelliJ IDEA (or any IDE).  
-From IntelliJ: run the main application class \`src/main/java/com/example/demo/DemoApplication.java\`.  
-From command line (project root):
-- Build: \`mvn -DskipTests=false clean package\`
-- Run: \`mvn spring-boot:run\`
-- Tests: \`mvn test\`  
-  Open: http://localhost:8080/
+Prerequisites: JDK 17+, Maven, IntelliJ IDEA (optional).
+- From IDE: run `src/main/java/com/example/demo/DemoApplication.java`
+- From command line (project root):
+    - Build: `mvn -DskipTests=false clean package`
+    - Run: `mvn spring-boot:run`
+    - Tests: `mvn test`  
+      Open the app at: http://localhost:8080/
 
-## Tests
-Unit tests are located under \`src/test/java\`. Critical tests validate min/max inventory behavior for parts and related domain logic.
-
-## Key locations (quick reference)
-- Main app: \`src/main/java/com/example/demo/DemoApplication.java\`
-- Bootstrap/sample data: \`src/main/java/com/example/demo/bootstrap/BootStrapData.java\`
-- Controllers: \`src/main/java/com/example/demo/controllers/\`
-- Domain models: \`src/main/java/com/example/demo/domain/\` (\`Part\`, \`InhousePart\`, \`OutsourcedPart\`, \`Product\`)
-- Services & implementations: \`src/main/java/com/example/demo/service/\`
-- Validators: \`src/main/java/com/example/demo/validators/\`
-- Templates: \`src/main/resources/templates/\` (main UI, forms, about, confirmations, errors)
-- Configuration: \`src/main/resources/application.properties\`
+## Project layout (quick reference)
+- Main app: `src/main/java/com/example/demo/DemoApplication.java`
+- Bootstrap/sample data: `src/main/java/com/example/demo/bootstrap/BootStrapData.java`
+- Controllers: `src/main/java/com/example/demo/controllers/`
+- Domain models: `src/main/java/com/example/demo/domain/` (`Part`, `Product`, etc.)
+- Services: `src/main/java/com/example/demo/service/`
+- Validators: `src/main/java/com/example/demo/validators/`
+- Templates: `src/main/resources/templates/`
+- Configuration: `src/main/resources/application.properties`
+- Tests: `src/test/java/`
 
 ## Competencies demonstrated
-- UI implementation: server-side templates, navigation, and user feedback flows.
-- Framework usage: Spring Boot MVC, Data repositories, dependency injection, lifecycle/bootstrapping, and validators.
-- Engineering practices: safe data seeding, unit testing, and removal of unused code to improve maintainability.
+- Implemented user interfaces with server-rendered templates and form validation.
+- Applied Spring Boot patterns: controllers, services, repositories, dependency injection, and lifecycle bootstrapping.
+- Built and tested business rules for inventory management and transactional purchase behavior.
+- Practiced maintainability: safe data seeding, focused unit tests, and removal of unused code.
+
+## Notes
+This repository is intended as a technical demo of engineering fundamentals in a small, end-to-end application.
+
+Author: `kylewebb16`
 
 
